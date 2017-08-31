@@ -14,6 +14,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
  * 
  */
 public class DateUtil {
+	
 	public final static String DATE_FORMAT = "yyyy-MM-dd";
 	public final static String DATE_FORMAT_CN = "yyyy年MM月dd日";
 	public final static String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
