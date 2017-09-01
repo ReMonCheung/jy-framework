@@ -1,5 +1,6 @@
 package com.jy.framework.core.util;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +23,58 @@ public class DateUtil {
 	public static final String MONTH_FORMAT = "yyyy-MM";
 	public static final String MONTH_FORMAT_CN = "yyyy年MM月";
 	public static final String DAY_FORMAT = "yyyyMMdd";
+	
+	/**
+	 * 系统当前的时间戳
+	 * @return 系统当前的时间戳
+	 */
+	public static Timestamp getTimestamp() {
+		return new Timestamp(new Date().getTime());
+	}
+	
+	/**
+	 * 指定日期的时间戳
+	 * @param date  指定日期
+	 * @return      指定日期的时间戳
+	 */
+	public static Timestamp getTimestamp(Date date) {
+		return new Timestamp(date.getTime());
+	}
+	
+	/**
+	 * 指定日历的时间戳
+	 * @param cal  指定日历
+	 * @return     指定日历的时间戳
+	 */
+	public static Timestamp getCalendarTimestamp(Calendar cal) {
+		return new Timestamp(cal.getTime().getTime());
+	}
+	
+	/**
+	 * 系统时间的毫秒数
+	 * @return 系统时间的毫秒数
+	 */
+	public static long getMillis() {
+		return new Date().getTime();
+	}
+
+	/**
+	 * 指定日历的毫秒数
+	 * @param cal  指定日历
+	 * @return     指定日历的毫秒数
+	 */
+	public static long getMillis(Calendar cal) {
+		return cal.getTime().getTime();
+	}
+
+	/**
+	 * 指定日期的毫秒数
+	 * @param date  指定日期
+	 * @return      指定日期的毫秒数
+	 */
+	public static long getMillis(Date date) {
+		return date.getTime();
+	}
 	
 	/**
 	 * 闰年校验
@@ -53,13 +106,65 @@ public class DateUtil {
 	 * @param date   指定日期
 	 * @return
 	 */
-	public static Date computeTime(int type, int value, Date date){
+	public static Date computeTime(int type, int value, Date date) {
 		GregorianCalendar gc = new GregorianCalendar();
 		gc.setTime(date);
 		gc.add(type, value);
 		return gc.getTime();
 	}
 	
+	/**
+	 * 
+	 * @param type   类型<br>
+	 * @see 
+	 * 			Calendar.YEAR<br>
+	 *      	Calendar.MONTH<br>
+	 *      	Calendar.WEEK_OF_YEAR<br>
+	 *      	Calendar.WEEK_OF_MONTH<br>
+	 *      	Calendar.DATE<br>
+	 *      	Calendar.DAY_OF_MONTH<br>
+	 *      	Calendar.DAY_OF_YEAR<br>
+	 *      	Calendar.DAY_OF_WEEK<br>
+	 *      	Calendar.DAY_OF_WEEK_IN_MONTH<br>
+	 *      	Calendar.HOUR<br>
+	 *      	Calendar.MINUTE<br>
+	 *      	Calendar.SECOND<br>
+	 *      	Calendar.MILLISECOND<br>
+	 * @param value     数量
+	 * @param date      指定日期
+	 * @param pattern   日期格式
+	 * @return
+	 */
+	public static String computeTime(int type, int value, Date date, String pattern) {
+		return formateDate(computeTime(type,value,date), pattern);
+	}
+	
+	
+	/**
+	 * 计算两个时间之间的差值，根据标志的不同而不同
+	 * @param type  计算标志，表示按照年/月/日/时/分/秒等计算
+	 * @see 
+	 * 			Calendar.YEAR<br>
+	 *      	Calendar.MONTH<br>
+	 *      	Calendar.DATE<br>
+	 *      	Calendar.HOUR<br>
+	 *      	Calendar.MINUTE<br>
+	 *      	Calendar.SECOND<br>
+	 * @param calSrc  减数
+	 * @param calDes  被减数
+	 * @return        两个日期之间的差值
+	 */
+	public static int matuDatetime(int type, Calendar calSrc, Calendar calDes) {
+		if ( type != Calendar.YEAR
+				|| type != Calendar.MONTH
+				|| type != Calendar.DATE
+				|| type != Calendar.HOUR
+				|| type != Calendar.MINUTE
+				|| type != Calendar.SECOND
+				)
+			return 0;
+		return calSrc.get(type) - calDes.get(type);
+	}
 	
 	/**
 	 * 获取指定日期的某月第一天或最后一天
