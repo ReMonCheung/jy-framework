@@ -155,15 +155,15 @@ public class DateUtil {
 	 * @return        两个日期之间的差值
 	 */
 	public static int matuDatetime(int type, Calendar calSrc, Calendar calDes) {
-		if ( type != Calendar.YEAR
-				|| type != Calendar.MONTH
-				|| type != Calendar.DATE
-				|| type != Calendar.HOUR
-				|| type != Calendar.MINUTE
-				|| type != Calendar.SECOND
+		if ( type == Calendar.YEAR
+				|| type == Calendar.MONTH
+				|| type == Calendar.DATE
+				|| type == Calendar.HOUR
+				|| type == Calendar.MINUTE
+				|| type == Calendar.SECOND
 				)
-			return 0;
-		return calSrc.get(type) - calDes.get(type);
+			return calSrc.get(type) - calDes.get(type);
+		return 0;
 	}
 	
 	/**
