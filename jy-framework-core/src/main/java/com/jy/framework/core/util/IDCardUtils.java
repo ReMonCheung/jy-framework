@@ -12,7 +12,7 @@ import com.jy.framework.core.vo.IdentityCardVO;
  * @author zhanglj
  *
  */
-public class IdentityCardUtils {
+public class IDCardUtils {
 
 	/**
 	 * 身份证有效性
