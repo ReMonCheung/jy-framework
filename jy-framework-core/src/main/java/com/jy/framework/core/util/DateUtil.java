@@ -15,13 +15,13 @@ import org.apache.commons.lang3.time.DateFormatUtils;
  */
 public class DateUtil {
 	
-	public final static String DATE_FORMAT = "yyyy-MM-dd";
-	public final static String DATE_FORMAT_CN = "yyyy年MM月dd日";
-	public final static String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-	public final static String DATETIME_FORMAT_CN = "yyyy年MM月dd日 HH时mm分ss秒";
-	public final static String MONTH_FORMAT = "yyyy-MM";
-	public final static String MONTH_FORMAT_CN = "yyyy年MM月";
-	public final static String DAY_FORMAT = "yyyyMMdd";
+	public static final String DATE_FORMAT = "yyyy-MM-dd";
+	public static final String DATE_FORMAT_CN = "yyyy年MM月dd日";
+	public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	public static final String DATETIME_FORMAT_CN = "yyyy年MM月dd日 HH时mm分ss秒";
+	public static final String MONTH_FORMAT = "yyyy-MM";
+	public static final String MONTH_FORMAT_CN = "yyyy年MM月";
+	public static final String DAY_FORMAT = "yyyyMMdd";
 	
 	/**
 	 * 闰年校验
