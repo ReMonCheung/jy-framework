@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.jy.framework.core.vo.IdentityCardVO;
+import com.jy.framework.core.util.bean.IdentityCardVO;
 
 /**
  * 身份证校验工具类

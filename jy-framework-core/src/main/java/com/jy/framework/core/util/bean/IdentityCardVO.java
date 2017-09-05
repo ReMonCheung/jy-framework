@@ -1,4 +1,4 @@
-package com.jy.framework.core.vo;
+package com.jy.framework.core.util.bean;
 
 import java.io.Serializable;
 
