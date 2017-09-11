@@ -9,26 +9,34 @@
   <name>jy-framework-core</name>
   
   <dependencies>
-  
-  	<!-- Junit -->
-  	<dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
-        <scope>test</scope>
-    </dependency>
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <exclusions>
+	    	<exclusion>
+	    		<groupId>org.springframework</groupId>
+	    		<artifactId>spring-aop</artifactId>
+	    	</exclusion>
+	    	<exclusion>
+	    		<groupId>org.springframework</groupId>
+	    		<artifactId>spring-expression</artifactId>
+	    	</exclusion>
+	    </exclusions>
+	</dependency>
     
     <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
-        <version>3.6</version>
     </dependency>
     
-  	<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
 	<dependency>
 	    <groupId>org.jdom</groupId>
 	    <artifactId>jdom2</artifactId>
-	    <version>2.0.6</version>
   	</dependency>
+  	
+  	<dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+    </dependency>
   </dependencies>
 </project>
