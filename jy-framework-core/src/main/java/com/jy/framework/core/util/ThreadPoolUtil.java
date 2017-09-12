@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 线程池工具类
- * @author chenbo
+ * @author zhanglj
  *
  */
 public class ThreadPoolUtil {
