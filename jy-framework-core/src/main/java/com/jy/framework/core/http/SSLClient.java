@@ -111,11 +111,9 @@ public class SSLClient {
     
 
     static class AnyTrustStrategy implements TrustStrategy{
-    	@Override
     	public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
     		return true;
     	}
-    	
     }
     
 }
