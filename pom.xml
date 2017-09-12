@@ -12,7 +12,10 @@
   <properties>
   	<spring.version>4.3.10.RELEASE</spring.version>
   	<springBoot.version>1.5.6.RELEASE</springBoot.version>
+  	<alibaba-fastjosn.version>1.2.38</alibaba-fastjosn.version>
   	<commons-lang3.version>3.6</commons-lang3.version>
+  	<httpClient.version>4.5.3</httpClient.version>
+  	<slf4j.version>1.7.25</slf4j.version>
   	<jdom2.version>2.0.6</jdom2.version>
   	<junit.version>4.11</junit.version>
   </properties>
@@ -126,6 +129,20 @@
 		    <artifactId>spring-boot</artifactId>
 		    <version>${springBoot.version}</version>
 		</dependency>
+		
+		<!-- fastjson -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>${alibaba-fastjosn.version}</version>
+		</dependency>
+		
+		<!-- httpclient -->
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>${httpClient.version}</version>
+		</dependency>
 				
   		<!-- apache commons -->
   		<dependency>
@@ -134,6 +151,13 @@
 	        <version>${commons-lang3.version}</version>
 	    </dependency>
 	    
+	    <!-- slf4j-api -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>${slf4j.version}</version>
+		</dependency>
+			    
 	    <!-- Jdom2 -->
 	    <dependency>
 		    <groupId>org.jdom</groupId>
