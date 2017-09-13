@@ -7,6 +7,8 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.rng.UniformRandomProvider;
+import org.apache.commons.rng.simple.RandomSource;
 import org.apache.commons.text.RandomStringGenerator;
 
 /**
@@ -127,7 +129,7 @@ public class DigestAlgorithm {
 //		RandomStringGenerator generator = new RandomStringGenerator.Builder().build();
 //		RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('A', 'z').build();
 //		System.out.println(generator.generate(20));
-//		UniformRandomProvider rng = RandomSource.create(...);
+//		UniformRandomProvider rng = RandomSource.create(source);
 //		RandomStringGenerator gen = new RandomStringGenerator.Builder()
 //		     .usingRandom(rng::nextInt)
 //		     .build();

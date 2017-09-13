@@ -16,6 +16,7 @@
   	<alibaba-fastjosn.version>1.2.38</alibaba-fastjosn.version>
   	<commons-lang3.version>3.6</commons-lang3.version>
   	<commons-text.version>1.1</commons-text.version>
+  	<commons-rng.version>1.0</commons-rng.version>
   	<httpClient.version>4.5.3</httpClient.version>
   	<slf4j.version>1.7.25</slf4j.version>
   	<jdom2.version>2.0.6</jdom2.version>
@@ -166,6 +167,20 @@
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-text</artifactId>
 		    <version>${commons-text.version}</version>
+		</dependency>
+
+		<!--commons-rng-core -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-rng-core</artifactId>
+		    <version>${commons-rng.version}</version>
+		</dependency>
+		
+		<!--commons-rng-simple -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-rng-simple</artifactId>
+		    <version>${commons-rng.version}</version>
 		</dependency>
 
 	    <!-- slf4j-api -->

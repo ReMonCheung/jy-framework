@@ -53,6 +53,16 @@
 	    <groupId>org.apache.commons</groupId>
 	    <artifactId>commons-text</artifactId>
 	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-rng-core</artifactId>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-rng-simple</artifactId>
+	</dependency>
     
 	<dependency>
 	    <groupId>org.jdom</groupId>
