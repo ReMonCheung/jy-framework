@@ -3,12 +3,7 @@ package com.jy.framework.core.encipher.digest;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.rng.UniformRandomProvider;
-import org.apache.commons.rng.simple.RandomSource;
 import org.apache.commons.text.RandomStringGenerator;
 
 /**
@@ -19,12 +14,10 @@ import org.apache.commons.text.RandomStringGenerator;
 public class DigestAlgorithm {
 	
 	public static String generateSalt(String arg) {
-		RandomStringGenerator generator = new RandomStringGenerator.Builder().build();
-		generator.generate(20);
-//		String arg0 = a.format(new Date());
-		arg = StringUtils.isBlank(arg) ? RandomStringUtils
-				.randomAlphanumeric(20) : arg.trim();
-		return Base64.encodeBase64String(a(arg.getBytes(), arg.getBytes()));
+		RandomStringGenerator generator = new RandomStringGenerator.Builder()
+				.withinRange('a', 'z')
+				.build();
+		return generator.generate(20);
 	}
 	
 	public static byte[] md5(String data) {
@@ -126,13 +119,11 @@ public class DigestAlgorithm {
 	}
 	
 	public static void main(String[] args) {
-//		RandomStringGenerator generator = new RandomStringGenerator.Builder().build();
-//		RandomStringGenerator generator = new RandomStringGenerator.Builder().withinRange('A', 'z').build();
-//		System.out.println(generator.generate(20));
-//		UniformRandomProvider rng = RandomSource.create(source);
-//		RandomStringGenerator gen = new RandomStringGenerator.Builder()
-//		     .usingRandom(rng::nextInt)
-//		     .build();
-
+		RandomStringGenerator generator = new RandomStringGenerator.Builder()
+							.withinRange('0', '9')
+							.withinRange('A', 'Z')
+							.withinRange('a', 'z')
+							.build();
+		System.out.println(generator.generate(20));
 	}
 }
