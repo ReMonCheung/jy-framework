@@ -2,12 +2,13 @@ package org.jy.framework.sharde.example.service.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.jy.framework.sharde.example.dao.StudentMapper;
 import org.jy.framework.sharde.example.dao.UserMapper;
 import org.jy.framework.sharde.example.entity.Student;
 import org.jy.framework.sharde.example.entity.User;
 import org.jy.framework.sharde.example.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserServiceImpl implements UserService {
 	
-	@Autowired
+	@Resource
 	private UserMapper userMapper;
 	
-	@Autowired
+	@Resource
 	private StudentMapper studentMapper;
 
 	@Override
