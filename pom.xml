@@ -9,6 +9,7 @@
   <modules>
   	<module>jy-framework-core</module>
     <module>jy-framework-sharde-example</module>
+    <module>jy-framework-sharde-example-masterslave</module>
   </modules>
   
   <properties>
@@ -24,9 +25,10 @@
   	<dangdang-sharding.version>1.0.0</dangdang-sharding.version>
   	<mybatis.version>3.2.4</mybatis.version>
   	<mybatis-spring.version>1.2.2</mybatis-spring.version>
-  	<mysql.version>5.1.28</mysql.version>
+  	<mysql.version>5.1.30</mysql.version>
   	<httpClient.version>4.5.3</httpClient.version>
   	<slf4j.version>1.7.25</slf4j.version>
+  	<logback.version>1.1.2</logback.version>
   	<jdom2.version>2.0.6</jdom2.version>
   	<junit.version>4.12</junit.version>
   </properties>
@@ -247,6 +249,18 @@
 		    <artifactId>slf4j-api</artifactId>
 		    <version>${slf4j.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
 			    
 	    <!-- Jdom2 -->
 	    <dependency>
