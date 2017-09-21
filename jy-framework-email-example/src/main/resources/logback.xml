@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	 <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
+    <property name="LOG_HOME" value="d:\\logs"/>
+    <property name="PROJECT_NAME" value="kaisagroup-processor"/>
+    <property name="LOG_PATTREN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35}[%line] -%msg %n" />
+    <property name="log.charset" value="UTF-8"/>
+    <property name="log.pattern" value="[%-5level] %date --%thread-- [%logger] %msg %n" />
+
+    <contextName>${log.context.name}</contextName>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="${log.charset}">
+            <pattern>${LOG_PATTREN}</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="ROOT_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 分包间隔是根据fileNamePattern中指定的事件最小单位，比如例子中的%d{yyyyMMddHH}的最小事件单位为小时，则每小时生成一个文件 -->
+            <FileNamePattern>${LOG_HOME}/${PROJECT_NAME}_logs/${PROJECT_NAME}_%d{yyyyMMdd}.log
+            </FileNamePattern>
+            <maxHistory>48</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>[%thread] %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36}  -%msg %n</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    
+	<logger name="org.springframework" level="WARN" />
+	<logger name="org.quartz" level="WARN" />
+	<logger name="com.alibaba.dubbo" level="WARN" />
+	<logger name="org.apache" level="WARN" />
+
+	<root level="DEBUG" addtivity="fasle">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROOT_APPENDER"/>
+	</root>
+</configuration>

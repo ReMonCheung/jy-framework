@@ -10,6 +10,7 @@
   	<module>jy-framework-core</module>
     <module>jy-framework-sharde-example</module>
     <module>jy-framework-sharde-example-masterslave</module>
+    <module>jy-framework-email-example</module>
   </modules>
   
   <properties>
@@ -250,6 +251,12 @@
 		    <version>${slf4j.version}</version>
 		</dependency>
 		
+		<dependency>
+	      <groupId>org.slf4j</groupId>
+	      <artifactId>slf4j-log4j12</artifactId>
+	      <version>${slf4j.version}</version>
+	    </dependency>
+	    
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>

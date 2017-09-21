@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 作业任务 -->
+	<bean name="emailTestJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"> 
+		<property name="jobClass" value="com.jy.processor.scheduler.EmailTestJob" /> 
+		<property name="jobDataAsMap"> 
+		   <map> 
+		       <entry key="timeout" value="0" /> 
+		   </map> 
+		</property> 
+		<property name="durability" value="true"/>
+	</bean> 
+	
+	<!-- 频度调用  触发器-->
+	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"> 
+		<property name="jobDetail" ref="emailTestJob" /> 
+		<property name="startDelay" value="0" /> <!-- 调度工厂实例化后，经过0秒开始执行调度 --> 
+		<property name="repeatInterval" value="2000" /><!-- 每2秒调度一次  --> 
+	</bean> 
+	
+	<!-- 定时任务  触发器 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> 
+		<property name="jobDetail" ref="emailTestJob" /> 
+		<!-- 每天12:00运行一次  -->
+		<property name="cronExpression" value="0 31 16 * * ?" /> 
+	</bean> 
+	
+	<!-- 调度工厂 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+		<property name="triggers"> 
+			<list> 
+<!-- 				<ref bean="cronTrigger" />  -->
+				<ref bean="simpleTrigger" /> 
+			</list> 
+		</property> 
+	</bean> 
+	
+</beans>
+
