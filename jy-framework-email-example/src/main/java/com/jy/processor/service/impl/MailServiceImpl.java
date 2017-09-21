@@ -31,7 +31,6 @@ public class MailServiceImpl implements MailService {
 	
 	private static final String encoding = "UTF-8"; 
 	
-	@Override
 	public boolean sendMail(final String[] to,final String from,final String[] cc,final String[] bcc,
 			final String subject,final String templateName, Object model,final Map<String,Object> attachments) {
 		
@@ -64,7 +63,6 @@ public class MailServiceImpl implements MailService {
 		
 	}
 	
-	@Override
 	public boolean sendMail(final String[] to,final String from,final String[] cc,final String[] bcc,
 			final String subject,final String templateName, Object model) {
 		try {
@@ -90,20 +88,17 @@ public class MailServiceImpl implements MailService {
 		
 	}
 
-	@Override
 	public boolean sendMail(final String to,final String from,final String[] cc,final String[] bcc,
 			final String subject,final String templateName,final Object model) {
 		return sendMail(new String[]{to}, from, cc, bcc, subject, templateName, model);  
 	}
 
-	@Override
 	public boolean sendMail(final Collection<String> to,final  String from,
 			final Collection<String> cc,final Collection<String> bcc,final String subject,
 			final String templateName,final Object model) {
 		return sendMail(_toArray(to), from, _toArray(cc), _toArray(bcc), subject, templateName, model);  
 	}
 
-	@Override
 	public boolean sendMail(final String to,final String from,final Collection<String> cc,
 			final Collection<String> bcc,final String subject,final String templateName,
 			final Object model) {
