@@ -18,21 +18,23 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
-
+	@Override
 	public boolean insert(User user) {
 		return userMapper.insert(user) > 0 ? true : false;
 	}
-
+	
+	@Override
 	public List<User> findAll() {
 		return userMapper.findAll();
 	}
 
-
+	@Override
 	public List<User> findByUserIds(List<Integer> ids) {
 		return userMapper.findByUserIds(ids);
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
+	@Override
 	public void transactionTestSucess() {
 		User u = new User();  
         u.setUserId(13);  
@@ -43,6 +45,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
+	@Override
 	public void transactionTestFailure() throws IllegalAccessException {
 		User u = new User();  
         u.setUserId(13);  

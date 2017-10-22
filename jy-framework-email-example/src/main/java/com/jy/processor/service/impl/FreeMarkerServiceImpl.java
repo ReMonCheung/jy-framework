@@ -18,6 +18,7 @@ public class FreeMarkerServiceImpl implements FreeMarkerService{
 	@Autowired
 	Configuration freemarkerConfiguration;
 	
+	@Override
 	public String getFreeMarkerTemplateContent(String template, Object model) {
 		LOGGER.info("params:{},template:{}", model.toString(),template);
 		StringBuffer content = new StringBuffer();

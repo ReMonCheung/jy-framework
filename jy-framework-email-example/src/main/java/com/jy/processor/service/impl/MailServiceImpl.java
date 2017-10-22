@@ -31,12 +31,14 @@ public class MailServiceImpl implements MailService {
 	
 	private static final String encoding = "UTF-8"; 
 	
+	@Override
 	public boolean sendMail(final String[] to,final String from,final String[] cc,final String[] bcc,
 			final String subject,final String templateName, Object model,final Map<String,Object> attachments) {
 		
 		final String text = freeMarkerService.getFreeMarkerTemplateContent(templateName, model); 
 		
 		javaMailSender.send(new MimeMessagePreparator() {  
+			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {  
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, encoding);  
 				message.setTo(to);  
@@ -63,12 +65,14 @@ public class MailServiceImpl implements MailService {
 		
 	}
 	
+	@Override
 	public boolean sendMail(final String[] to,final String from,final String[] cc,final String[] bcc,
 			final String subject,final String templateName, Object model) {
 		try {
 			final String text = freeMarkerService.getFreeMarkerTemplateContent(templateName, model); 
 			
-			javaMailSender.send(new MimeMessagePreparator() {  
+			javaMailSender.send(new MimeMessagePreparator() { 
+				@Override
 				public void prepare(MimeMessage mimeMessage) throws Exception {  
 					MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, encoding);  
 					message.setTo(to);  
@@ -88,17 +92,20 @@ public class MailServiceImpl implements MailService {
 		
 	}
 
+	@Override
 	public boolean sendMail(final String to,final String from,final String[] cc,final String[] bcc,
 			final String subject,final String templateName,final Object model) {
 		return sendMail(new String[]{to}, from, cc, bcc, subject, templateName, model);  
 	}
 
+	@Override
 	public boolean sendMail(final Collection<String> to,final  String from,
 			final Collection<String> cc,final Collection<String> bcc,final String subject,
 			final String templateName,final Object model) {
 		return sendMail(_toArray(to), from, _toArray(cc), _toArray(bcc), subject, templateName, model);  
 	}
 
+	@Override
 	public boolean sendMail(final String to,final String from,final Collection<String> cc,
 			final Collection<String> bcc,final String subject,final String templateName,
 			final Object model) {
@@ -106,7 +113,9 @@ public class MailServiceImpl implements MailService {
 	}
 
 	private String[] _toArray(Collection<String> collection) {  
-        if (collection == null || collection.isEmpty()) return new String[0];  
+        if (collection == null || collection.isEmpty()) {
+        	return new String[0];  
+        }
         return collection.toArray(new String[0]);  
     }  
 	
