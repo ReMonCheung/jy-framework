@@ -161,9 +161,73 @@ public class DateUtil {
 				|| type == Calendar.HOUR
 				|| type == Calendar.MINUTE
 				|| type == Calendar.SECOND
+				|| type == Calendar.DAY_OF_YEAR
 				)
 			return calSrc.get(type) - calDes.get(type);
 		return 0;
+	}
+	
+	
+	/**
+	 * 根据日期获取季度
+	 * @param cal
+	 * @return
+	 */
+	public static int getQuarter(Calendar cal){
+		int month = cal.get(Calendar.MONTH);
+		int quarter = 0;
+		if(month<3){
+			quarter = 1;
+		}else if(month<6 && month>2){
+			quarter = 2;
+		}else if(month<9 && month>5){
+			quarter = 3;
+		}else if(month<12 && month>8){
+			quarter = 4;
+		}
+		return quarter;
+	}
+	
+	/**
+	 * 获取每个季度已过天数（不含当天）
+	 * @param date 当前日期
+	 * @return
+	 */
+	public static int matuQuarterDay(Date date){
+		int day = 0;
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int year = cal.get(Calendar.YEAR);
+		int quarter = getQuarter(cal);
+		if(quarter == 0){
+			return 0;
+		}
+		
+		try {
+			Calendar cal1 =  Calendar.getInstance();
+			Date date1 = null;
+			if(quarter == 1){
+				date1 = parse(year+"-1-1",DATE_FORMAT);
+				cal1.setTime(date1);
+				day = matuDatetime(Calendar.DAY_OF_YEAR,cal,cal1);
+			}else if(quarter == 2){
+				date1 = parse(year+"-4-1",DATE_FORMAT);
+				cal1.setTime(date1);
+				day = matuDatetime(Calendar.DAY_OF_YEAR,cal,cal1);
+			}else if(quarter == 3){
+				date1 = parse(year+"-7-1",DATE_FORMAT);
+				cal1.setTime(date1);
+				day = matuDatetime(Calendar.DAY_OF_YEAR,cal,cal1);
+			}else if(quarter == 4){
+				date1 = parse(year+"-10-1",DATE_FORMAT);
+				cal1.setTime(date1);
+				day = matuDatetime(Calendar.DAY_OF_YEAR,cal,cal1);
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return day;
 	}
 	
 	/**
@@ -249,6 +313,11 @@ public class DateUtil {
 //			for (int i = 0; i < 5; i++) {
 //				new TestThread().start();
 //			}
+			Calendar cal = Calendar.getInstance();
+			System.out.println(cal.get(Calendar.MONTH));
+			System.out.println(cal.get(Calendar.YEAR));
+			System.out.println(cal.get(Calendar.DAY_OF_YEAR));
+			System.out.println(matuQuarterDay(new Date()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

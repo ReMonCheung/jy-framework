@@ -275,7 +275,14 @@
 		    <artifactId>jdom2</artifactId>
 		    <version>${jdom2.version}</version>
 	  	</dependency>
-	    
+	  	
+	  	<!-- SFTP -->
+	  	<dependency>
+		    <groupId>com.jcraft</groupId>
+		    <artifactId>jsch</artifactId>
+		    <version>0.1.54</version>
+		</dependency>
+		    
 	    <!-- Junit -->
   		<dependency>
   			<groupId>junit</groupId>
